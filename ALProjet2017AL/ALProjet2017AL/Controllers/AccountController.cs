@@ -10,6 +10,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ALProjet2017AL.Models;
 
+//test Commit Mokrane
+
 namespace ALProjet2017AL.Controllers
 {
     [Authorize]
