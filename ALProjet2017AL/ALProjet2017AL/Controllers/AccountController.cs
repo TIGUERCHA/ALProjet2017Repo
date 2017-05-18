@@ -12,6 +12,8 @@ using ALProjet2017AL.Models;
 
 //test Commit Mokrane
 
+//test commit 2
+
 namespace ALProjet2017AL.Controllers
 {
     [Authorize]
