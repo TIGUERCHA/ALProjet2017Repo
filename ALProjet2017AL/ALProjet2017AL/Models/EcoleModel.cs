@@ -8,8 +8,8 @@ namespace ALProjet2017AL.Models
 {
     public class EcoleModel
     {
-        private String name { get; set; }
+        private string name { get; set; }
         private AdresseModel adresse { get; set; }
-        private String logoURL { get; set; }
+        private string logoURL { get; set; }
     }
 }

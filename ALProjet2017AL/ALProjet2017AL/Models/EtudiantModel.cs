@@ -7,5 +7,9 @@ namespace ALProjet2017AL.Models
 {
     public class EtudiantModel
     {
+        private string Prenom { get; set; }
+        private string Nom { get; set; }
+        private DateTime date_naissance { get; set; }
+        private ClasseModel classe { get; set; }
     }
 }
