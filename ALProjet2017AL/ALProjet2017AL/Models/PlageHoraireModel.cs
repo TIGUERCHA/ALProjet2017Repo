@@ -5,10 +5,7 @@ using System.Web;
 
 namespace ALProjet2017AL.Models
 {
-    public class ProfesseurModel
+    public class PlageHoraireModel
     {
-        private String name { get; set; }
-        private String firstName { get; set; }
-
     }
 }
