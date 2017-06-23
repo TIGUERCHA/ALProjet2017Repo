@@ -1,11 +1,19 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "PlanningStudentView";
 }
 
-<h2>Planning</h2>
+<h2>PlanningStudentView</h2>
 
 <div id="calendar"></div>
+<p>Voir mon planning par:</p>
+
+@using (Html.BeginForm("RadioButtonChoice", "PlanningChoice"))
+{
+    @Html.RadioButton("TypePlanning", "day") <span>Jour</span>
+    @Html.RadioButton("TypePlanning", "week") <span>Semaine</span>
+    <input type="submit" value="OK" />
+}
 
 <input type="time" id="timepicker">
 

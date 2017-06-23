@@ -198,8 +198,11 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\PlanningViewController.cs" />
+    <Compile Include="Controllers\NotFoundController.cs" />
+    <Compile Include="Controllers\PlanningChoiceController.cs" />
     <Compile Include="Controllers\PlanningController.cs" />
+    <Compile Include="Controllers\PlanningStudentController.cs" />
+    <Compile Include="Controllers\WeeklyPlanningController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -240,6 +243,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\PlanningJs\classical-calendar.js" />
     <Content Include="Scripts\PlanningJs\Planning.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -279,10 +283,14 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Planning\Index.cshtml" />
+    <Content Include="Views\PlanningStudent\MonthlyPlanning.cshtml" />
+    <Content Include="Views\WeeklyPlanning\WeekPlanning.cshtml" />
+    <Content Include="Views\NotFound\NotFoundView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\aaaa\" />
+    <Folder Include="Views\PlanningChoice\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace ALProjet2017AL.Controllers
 {
-    public class PlanningViewController : Controller
+    public class WeeklyPlanningController : Controller
     {
-        // GET: PlanningView
-        public ActionResult PlanningView()
+        // GET: WeeklyPlanning
+        public ActionResult WeekPlanning()
         {
             return View();
         }
