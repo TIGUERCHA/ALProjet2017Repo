@@ -1,4 +1,6 @@
-﻿//var dateFormat = "mm/dd/yy";
+﻿//$(document).ready();
+
+//var dateFormat = "mm/dd/yy";
 $('#calendar').datepicker({
     dateFormat: 'dd/mm/yy',
     inline: true,
@@ -6,10 +8,8 @@ $('#calendar').datepicker({
     showOtherMonths: true,
     dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
     onSelect: function (dateText, inst) {
-        $('#form').val(dateText);
-        alert("date recuperer : " + dateText);
+        $('#date-value').val(dateText);
+        console.log(inst);
     }
 
 });
-
-$('#timepicker').datepicker();

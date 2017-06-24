@@ -10,15 +10,23 @@
 
 @using (Html.BeginForm("RadioButtonChoice", "PlanningChoice"))
 {
-    @Html.RadioButton("TypePlanning", "day") <span>Jour</span>
-    @Html.RadioButton("TypePlanning", "week") <span>Semaine</span>
+    <div>
+        @Html.TextBox("TypePlanning", "", new { @id = "date-value" });
+    </div>
+    <div>
+        @Html.RadioButton("TypePlanning", "week", new { @checked = "checked" }) <span>Semaine</span>
+        @Html.RadioButton("TypePlanning", "day") <span>Jour</span>
+    </div>
     <input type="submit" value="OK" />
 }
-
-<input type="time" id="timepicker">
-
+ 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="../Scripts/browser.js">
+    // Ce script est important, sinon, une erreur sur la compatibilité
+    // du browser empêche le fonctionnement du calendrier mensuel
+    // provenant de JQuery
+</script>
 <script src="../Scripts/PlanningJs/classical-calendar.js"></script>
 <script src="../Scripts/jquery.ui.datepicker.min.js"></script>

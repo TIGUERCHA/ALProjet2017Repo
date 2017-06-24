@@ -18,7 +18,6 @@ namespace ALProjet2017AL.Controllers
             }
             else if(TypePlanning.Equals("week"))
             {
-                Console.Write("TARASSE");
                 return RedirectToAction("WeekPlanning", "WeeklyPlanning");
             }
             return RedirectToAction("NotFound", "NotFound");
