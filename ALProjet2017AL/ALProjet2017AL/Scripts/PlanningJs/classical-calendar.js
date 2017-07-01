@@ -13,3 +13,14 @@ $('#calendar').datepicker({
     }
 
 });
+
+$("#searchId").click(function () {
+    alert("ok");
+    //var searchSansCri = "&btnumero=&articlecode=&techniciencode=&startbesoindate=&finishbesoindate=&ticketremedy=&usercreation=&iginterventioncode=&natureBt=&equipeBt=&mesDemandes=false&codemagasinautre=&codemagasinorigine=&codeigLivraison=&client=0&operateur=";
+    //var searchString = GetValueSearch();
+    ////alert(GetValueSearch(searchString));
+    //if (searchString == searchSansCri + "and" || searchString == searchSansCri + "or")
+    //    $('#modalRechercheSansCritere').modal('show');
+    //else
+    //    search();
+});

@@ -31,7 +31,7 @@ textarea {
 .ui-datepicker th {
     margin: 0;
     padding: 0;
-    border: none;
+    border:none;
     border-spacing: 0;
 }
 
@@ -47,10 +47,11 @@ textarea {
  
     background: #141517;
     /*background: #b6ff00;*/
+    /*border-radius:10px;*/
  
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
+    -webkit-border-radius: 13px;
+    -moz-border-radius: 13px;
+    border-radius: 13px;
  
     -webkit-box-shadow: 0px 1px 1px rgba(255,255,255, .1), inset 0px 1px 1px rgb(0,0,0);
     -moz-box-shadow: 0px 1px 1px rgba(255,255,255, .1), inset 0px 1px 1px rgb(0,0,0);
@@ -121,9 +122,7 @@ textarea {
     display: block;
     width: 5px;
     height: 10px;
-    text-indent: -9999px;
- 
-    background-image: url(../Content/arrows.png);
+    text-indent: -12px;
 }
  
 .ui-datepicker-prev span { background-position: 0px 0px; }
@@ -210,24 +209,39 @@ textarea {
     }*/
 
     #calendarAll{
-        /*float:left;*/
+        float:left;
         padding:15px;
         width:60%;
         position:center relative;
-        /*background-color:darkorange;*/
     }
 
     #formulaire{
-        /*float:right;*/
-        width:60%;
-        position:center relative;
-        /*background-color:chartreuse;*/
+        width:100%;
     }
 
     #formulaire2{
-        /*float:right;*/
-        width:60%;
-        position:center relative;
-        /*background-color:chartreuse;*/
+        width:100%;
     }
 
+    #enregistrerId{
+        position:center relative;
+        float: right;
+    }
+
+    #gouche{
+        /*background-color:aqua;*/
+        /*border-color:aqua;*/
+        width:40%;
+        height:600px;
+        float:left;
+        padding:10px;
+    }
+
+    #droit{
+        /*background-color:blueviolet;*/
+        /*border-color:blueviolet;*/
+        width:60%;
+        height:600px;
+        float:right;
+        padding:20px
+    }

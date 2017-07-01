@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    $('input.timepicker').timepicker({});
+
 });
 
 $('#calendar').datepicker({
@@ -17,24 +17,10 @@ $('#calendar').datepicker({
 
 })
 
-$('#timepicker').timepicker({
-    timeFormat: 'h:mm p',
-    interval: 60,
-    minTime: '10',
-    maxTime: '6:00pm',
-    defaultTime: '11',
-    startTime: '10:00',
-    dynamic: false,
-    dropdown: true,
-    scrollbar: true
+$('#enregistrerId').click(function () {
+
+    alert("a implimenter");
 });
-
-//$('#articlebtn').click(function () {
-
-//    $('#codearticle').val($('#hiddencdecodearticle').val());
-//    boost.popup.searchByarticle();
-
-//});
 
 //function searchByarticle() {
 
@@ -44,3 +30,17 @@ $('#timepicker').timepicker({
 //    this.initJqGridArticle();
 //    $("#articlegrid").jqGrid('setGridParam', { url: urlGetArticleSearch + "?articlecode=" + codeArticle + "&articlelibelle=" + libelleArticle + "&horsnormearticle=" + horsNormeArticle, page: 1 }).trigger("reloadGrid");
 //};
+
+
+$('#searchvalid').click(function () {
+    alert("oui");
+    ////var inputSearch = GetValueSearch();
+    ////var url = saveSearchUrl + inputName + "&commandenum=" + inputSearch;
+    //var inputName = $('#searchlibelle').val();
+    //var defaut = $('#idDefaut').is(":checked");
+    //var url = saveSearchUrl + inputName + "&defaut=" + defaut;
+    //$.get(url, function (data) {
+    //    $('#SearchSave').modal('hide');
+    //    $('#idRechercheList').html(data);
+    //});
+});

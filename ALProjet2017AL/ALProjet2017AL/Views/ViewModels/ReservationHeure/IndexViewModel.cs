@@ -5,6 +5,7 @@ using System.Web;
 
 namespace ALProjet2017AL.Views.ViewModels.ReservationHeure
 {
+    [Serializable]
     public class IndexViewModel
     {
         public string PROMOTION { get; set; }

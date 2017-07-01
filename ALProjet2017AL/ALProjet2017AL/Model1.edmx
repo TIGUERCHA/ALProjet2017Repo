@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CalendrierESGIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ETUDIANT">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="nom" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="prenom" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MATIERE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LIBELLE" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROMOTION">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom_specialite" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="annee" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RESERVATIONs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PROMOTION" Type="int" Nullable="false" />
+          <Property Name="MATIERE" Type="int" Nullable="false" />
+          <Property Name="DATE" Type="date" Nullable="false" />
+          <Property Name="HEURE_DEBUT" Type="date" Nullable="false" />
+          <Property Name="HEURE_FIN" Type="date" Nullable="false" />
+          <Property Name="SALLE" Type="int" Nullable="false" />
+          <Property Name="PROFESSEUR" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SALLE">
+          <Key>
+            <PropertyRef Name="id_salle" />
+          </Key>
+          <Property Name="id_salle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom_salle" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="adresse_salle" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_RESERVATIONs_RESERVATIONs">
+          <End Role="RESERVATIONs" Type="Self.RESERVATIONs" Multiplicity="1" />
+          <End Role="RESERVATIONs1" Type="Self.RESERVATIONs" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="RESERVATIONs">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RESERVATIONs1">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CalendrierESGIModelStoreContainer">
+          <EntitySet Name="ETUDIANT" EntityType="Self.ETUDIANT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MATIERE" EntityType="Self.MATIERE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROMOTION" EntityType="Self.PROMOTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RESERVATIONs" EntityType="Self.RESERVATIONs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SALLE" EntityType="Self.SALLE" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_RESERVATIONs_RESERVATIONs" Association="Self.FK_RESERVATIONs_RESERVATIONs">
+            <End Role="RESERVATIONs" EntitySet="RESERVATIONs" />
+            <End Role="RESERVATIONs1" EntitySet="RESERVATIONs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CalendrierESGIModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CalendrierESGIEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ETUDIANT" EntityType="CalendrierESGIModel.ETUDIANT" />
+          <EntitySet Name="MATIERE" EntityType="CalendrierESGIModel.MATIERE" />
+          <EntitySet Name="PROMOTION" EntityType="CalendrierESGIModel.PROMOTION" />
+          <EntitySet Name="RESERVATIONs" EntityType="CalendrierESGIModel.RESERVATIONs" />
+          <EntitySet Name="SALLE" EntityType="CalendrierESGIModel.SALLE" />
+          <AssociationSet Name="FK_RESERVATIONs_RESERVATIONs" Association="CalendrierESGIModel.FK_RESERVATIONs_RESERVATIONs">
+            <End Role="RESERVATIONs" EntitySet="RESERVATIONs" />
+            <End Role="RESERVATIONs1" EntitySet="RESERVATIONs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ETUDIANT">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nom" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="prenom" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MATIERE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LIBELLE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PROMOTION">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_specialite" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="annee" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RESERVATIONs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PROMOTION" Type="Int32" Nullable="false" />
+          <Property Name="MATIERE" Type="Int32" Nullable="false" />
+          <Property Name="DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="HEURE_DEBUT" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="HEURE_FIN" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SALLE" Type="Int32" Nullable="false" />
+          <Property Name="PROFESSEUR" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RESERVATIONs1" Relationship="CalendrierESGIModel.FK_RESERVATIONs_RESERVATIONs" FromRole="RESERVATIONs" ToRole="RESERVATIONs1" />
+          <NavigationProperty Name="RESERVATIONs2" Relationship="CalendrierESGIModel.FK_RESERVATIONs_RESERVATIONs" FromRole="RESERVATIONs1" ToRole="RESERVATIONs" />
+        </EntityType>
+        <EntityType Name="SALLE">
+          <Key>
+            <PropertyRef Name="id_salle" />
+          </Key>
+          <Property Name="id_salle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_salle" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="adresse_salle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_RESERVATIONs_RESERVATIONs">
+          <End Type="CalendrierESGIModel.RESERVATIONs" Role="RESERVATIONs" Multiplicity="1" />
+          <End Type="CalendrierESGIModel.RESERVATIONs" Role="RESERVATIONs1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="RESERVATIONs">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RESERVATIONs1">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CalendrierESGIModelStoreContainer" CdmEntityContainer="CalendrierESGIEntities">
+          <EntitySetMapping Name="ETUDIANT">
+            <EntityTypeMapping TypeName="CalendrierESGIModel.ETUDIANT">
+              <MappingFragment StoreEntitySet="ETUDIANT">
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MATIERE">
+            <EntityTypeMapping TypeName="CalendrierESGIModel.MATIERE">
+              <MappingFragment StoreEntitySet="MATIERE">
+                <ScalarProperty Name="LIBELLE" ColumnName="LIBELLE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROMOTION">
+            <EntityTypeMapping TypeName="CalendrierESGIModel.PROMOTION">
+              <MappingFragment StoreEntitySet="PROMOTION">
+                <ScalarProperty Name="annee" ColumnName="annee" />
+                <ScalarProperty Name="nom_specialite" ColumnName="nom_specialite" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RESERVATIONs">
+            <EntityTypeMapping TypeName="CalendrierESGIModel.RESERVATIONs">
+              <MappingFragment StoreEntitySet="RESERVATIONs">
+                <ScalarProperty Name="PROFESSEUR" ColumnName="PROFESSEUR" />
+                <ScalarProperty Name="SALLE" ColumnName="SALLE" />
+                <ScalarProperty Name="HEURE_FIN" ColumnName="HEURE_FIN" />
+                <ScalarProperty Name="HEURE_DEBUT" ColumnName="HEURE_DEBUT" />
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
+                <ScalarProperty Name="MATIERE" ColumnName="MATIERE" />
+                <ScalarProperty Name="PROMOTION" ColumnName="PROMOTION" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SALLE">
+            <EntityTypeMapping TypeName="CalendrierESGIModel.SALLE">
+              <MappingFragment StoreEntitySet="SALLE">
+                <ScalarProperty Name="adresse_salle" ColumnName="adresse_salle" />
+                <ScalarProperty Name="nom_salle" ColumnName="nom_salle" />
+                <ScalarProperty Name="id_salle" ColumnName="id_salle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
