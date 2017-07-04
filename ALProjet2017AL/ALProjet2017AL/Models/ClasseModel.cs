@@ -2,9 +2,9 @@
 
 namespace ALProjet2017AL.Models
 {
-    internal class ClasseModel
+    public class ClasseModel
     {
-        private string promotion { get; set; }
-        private List<EtudiantModel> eleves { get; set; }
+        public string promotion { get; set; }
+        public List<EtudiantModel> eleves { get; set; }
     }
 }

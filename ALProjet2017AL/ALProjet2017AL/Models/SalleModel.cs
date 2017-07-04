@@ -7,7 +7,11 @@ namespace PlanningEsgi.Models
 {
     public class SalleModel
     {
-        private string Nom_salle { get; set; }
+        public string Nom_salle { get; set; }
         
+        public SalleModel(string nom)
+        {
+            Nom_salle = nom;
+        }
     }
 }

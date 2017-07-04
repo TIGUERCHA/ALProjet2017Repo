@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace ALProjet2017AL.Controllers
 {
-    public class WeeklyPlanningController : Controller
+    public class DailyPlanningController : Controller
     {
-        // GET: WeeklyPlanning
+        // GET: DailyPlanning
         public ActionResult DayPlanning()
         {
             return View();

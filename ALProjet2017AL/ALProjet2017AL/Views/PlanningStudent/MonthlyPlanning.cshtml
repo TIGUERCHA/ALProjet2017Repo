@@ -11,7 +11,7 @@
 @using (Html.BeginForm("RadioButtonChoice", "PlanningChoice"))
 {
     <div>
-        @Html.TextBox("TypePlanning", "", new { @id = "date-value" });
+        @Html.TextBox("DateChosen", "", new { @id = "date-value" });
     </div>
     <div>
         @Html.RadioButton("TypePlanning", "week", new { @checked = "checked" }) <span>Semaine</span>

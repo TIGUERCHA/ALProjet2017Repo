@@ -7,10 +7,10 @@ namespace PlanningEsgi.Models
 {
     public class AdresseModel
     {
-        private int number { get; set; }
-        private string street { get; set; }
-        private string city { get; set; }
-        private int zipCode { get; set; }
-        private string Country { get; set; }
+        public int number { get; set; }
+        public string street { get; set; }
+        public string city { get; set; }
+        public int zipCode { get; set; }
+        public string Country { get; set; }
     }
 }

@@ -7,9 +7,9 @@ namespace PlanningEsgi.Models
 {
     public class CoursModel
     {
-        private string type_Cours { get; set; }
-        private string matière { get; set; }
-        private int coefficient { get; set; }
+        public string type_Cours { get; set; }
+        public string matière { get; set; }
+        public int coefficient { get; set; }
 
     }
 }

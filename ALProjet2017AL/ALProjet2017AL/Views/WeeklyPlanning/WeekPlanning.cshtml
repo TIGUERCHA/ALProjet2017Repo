@@ -1,6 +1,35 @@
-﻿
+﻿@model ALProjet2017AL.Models.DayModel
 @{
     ViewBag.Title = "WeekPlanning";
 }
 
-<h2>Planning de la semainde du </h2>
+@Html.DisplayFor(m => m.getDayOfWeek)
+@Styles.Render("~/Content/WeekPlanning.css")
+
+<table>
+    <tr>
+        <th>Horaire</th>
+        <th>Lundi</th>
+        <th>Mardi</th>
+        <th>Mercredi</th>
+        <th>Jeudi</th>
+        <th>Vendredi</th>
+        <th>Samedi</th>
+    </tr>
+
+    @for (var i = 8; i <= 20; i++)
+    {
+        <tr>
+            <td class="horaire" id="@i-am">@i h 00</td>
+        </tr>
+        <tr>
+            <td class="horaire" id="@i-15-am">@i h 15</td>
+        </tr>
+        <tr>
+            <td class="horaire" id="@i-30-am">@i h 30</td>
+        </tr>
+        <tr>
+            <td class="horaire" id="@i-45-am">@i h 45</td>
+        </tr>
+    }
+</table>

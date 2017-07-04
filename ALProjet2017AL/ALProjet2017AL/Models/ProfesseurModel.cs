@@ -7,8 +7,8 @@ namespace ALProjet2017AL.Models
 {
     public class ProfesseurModel
     {
-        private string name { get; set; }
-        private string firstName { get; set; }
+        public string name { get; set; }
+        public string firstName { get; set; }
 
     }
 }
