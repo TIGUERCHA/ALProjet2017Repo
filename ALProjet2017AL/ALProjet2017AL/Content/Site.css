@@ -245,3 +245,24 @@ textarea {
         float:right;
         padding:20px
     }
+
+    #tableConsultation{
+        border:2px solid #565656;
+        width: 400px;
+        height: 500px
+    }
+
+    #ligneSeparation{
+        border:2px solid #565656;
+        height: 20px
+    }
+
+    #consultaionBtn{
+        width:200px;
+        height:100px;
+        border-radius:50px;
+        position:absolute;
+        opacity:0.5;
+        margin:140px 85px;
+        text-decoration-color:#4cff00;
+    }

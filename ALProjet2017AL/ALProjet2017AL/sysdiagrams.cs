@@ -12,15 +12,12 @@ namespace ALProjet2017AL
     using System;
     using System.Collections.Generic;
     
-    public partial class RESERVATIONs
+    public partial class sysdiagrams
     {
-        public int ID { get; set; }
-        public string PROMOTION { get; set; }
-        public string MATIERE { get; set; }
-        public string SALLE { get; set; }
-        public string PROFESSEUR { get; set; }
-        public System.DateTime DATE { get; set; }
-        public System.DateTime DATE_DEBUT { get; set; }
-        public System.DateTime DATE_FIN { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }
