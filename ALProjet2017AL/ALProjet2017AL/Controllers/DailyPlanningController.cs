@@ -1,5 +1,4 @@
-﻿using ALProjet2017AL.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,9 +9,9 @@ namespace ALProjet2017AL.Controllers
     public class DailyPlanningController : Controller
     {
         // GET: DailyPlanning
-        public ActionResult DayPlanning(DayModel dayConcerned)
+        public ActionResult DayPlanning()
         {
-            return View(dayConcerned);
+            return View();
         }
     }
 }
