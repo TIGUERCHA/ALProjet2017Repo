@@ -8,8 +8,8 @@ namespace ALProjet2017AL.Models
 {
     public class PlageHoraireModel
     {
-        private SalleModel salle { get; set; }
-        private ProfesseurModel professeur { get; set; }
-        private ClasseModel classe { get; set; }
+        public SalleModel salle { get; set; }
+        public ProfesseurModel professeur { get; set; }
+        public ClasseModel classe { get; set; }
     }
 }

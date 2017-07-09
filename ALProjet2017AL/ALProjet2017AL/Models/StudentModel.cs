@@ -8,9 +8,9 @@ namespace PlanningEsgi.Models
 {
     public class EtudiantModel
     {
-        private string Prenom { get; set; }
-        private string Nom { get; set; }
-        private DateTime date_naissance { get; set; }
-        private ClasseModel classe { get; set; }
+        public string Prenom { get; set; }
+        public string Nom { get; set; }
+        public DateTime date_naissance { get; set; }
+        public ClasseModel classe { get; set; }
     }
 }
