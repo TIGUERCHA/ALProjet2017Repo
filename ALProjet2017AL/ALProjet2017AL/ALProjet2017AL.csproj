@@ -198,6 +198,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DailyPlanningController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NotFoundController.cs" />
@@ -233,11 +234,14 @@
     <Compile Include="Models\AdresseModel.cs" />
     <Compile Include="Models\ClasseModel.cs" />
     <Compile Include="Models\CoursModel.cs" />
+    <Compile Include="Models\DayModel.cs" />
     <Compile Include="Models\EcoleModel.cs" />
+    <Compile Include="Models\enumeration\PlanningType.cs" />
     <Compile Include="Models\EtudiantModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PlageHoraireModel.cs" />
+    <Compile Include="Models\PlanningDateModel.cs" />
     <Compile Include="Models\ProfesseurModel.cs" />
     <Compile Include="Models\SalleModel.cs" />
     <Compile Include="Models\StudentModel.cs" />
@@ -257,6 +261,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\WeekPlanning.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -300,6 +305,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Content\arrows.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -339,6 +345,8 @@
     <Content Include="Views\WeeklyPlanning\WeekPlanning.cshtml" />
     <Content Include="Views\NotFound\NotFoundView.cshtml" />
     <Content Include="Views\Popups\Popup.cshtml" />
+    <Content Include="Views\Planning\_Formulaire.cshtml" />
+    <Content Include="Views\DailyPlanning\DayPlanning.cshtml" />
     <Content Include="Views\Planning\_Formulaire.cshtml" />
   </ItemGroup>
   <ItemGroup>

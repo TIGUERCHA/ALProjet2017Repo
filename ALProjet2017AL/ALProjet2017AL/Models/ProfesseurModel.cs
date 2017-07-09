@@ -7,8 +7,13 @@ namespace ALProjet2017AL.Models
 {
     public class ProfesseurModel
     {
-        public string name { get; set; }
-        public string firstName { get; set; }
+        public string nom { get; set; }
+        public string prenom { get; set; }
 
+        public ProfesseurModel(string name, string firstname)
+        {
+            this.nom = name;
+            prenom = firstname;
+        }
     }
 }

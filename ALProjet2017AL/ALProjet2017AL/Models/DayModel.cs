@@ -9,7 +9,8 @@ namespace ALProjet2017AL.Models
     public class DayModel
     {
 
-        public List<PlageHoraireModel> plagesHoraireDuJour { get; set; }
+        // C'est mauvais -> On ne sait pas quelle classe
+        // public List<PlageHoraireModel> plagesHoraireDuJour { get; set; }
         public string day { get; set; }
         public string month { get; set; }
         public string year { get; set; }
@@ -19,7 +20,6 @@ namespace ALProjet2017AL.Models
             this.day = day;
             this.month = month;
             this.year = year;
-            plagesHoraireDuJour = new List<PlageHoraireModel>();
         }
 
         public string getDayOfWeek()
