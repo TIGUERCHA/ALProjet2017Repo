@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
 namespace ALProjet2017AL.Views.ViewModels.ReservationHeure
 {
     [Serializable]
-    public class IndexViewModel
+    public class IndexViewModelPlanning
     {
         public string PROMOTION { get; set; }
         public string MATIERE { get; set; }
@@ -16,4 +17,10 @@ namespace ALProjet2017AL.Views.ViewModels.ReservationHeure
         public string SALLE { get; set; }
         public string PROFFESSEUR { get; set; }
     }
+
+    //public class ReservationListeModel
+    //{
+    //    public List<IndexViewModel> Reservations { get; set; }
+    //    public string ERREUR { get; set; }
+    //}
 }

@@ -1,5 +1,7 @@
-﻿$(document).ready(function () {
+﻿var dateSelected = null;
 
+$(document).ready(function () {
+    $("#consultaionBtn").hide();
 });
 
 $('#calendar').datepicker({
@@ -9,17 +11,65 @@ $('#calendar').datepicker({
     showOtherMonths: true,
     dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
     onSelect: function (dateText, inst) {
-        $('#form').val(dateText);
-        alert("date recuperer : " + dateText);
-        //faireTraitement(dateText);
-
+        
+        dateSelected = dateText;
+        $("#consultaionBtn").text("Planning de \n" + dateText);
+        $("#consultaionBtn").show();
+        alert("avant");
+        getPlanning();
     }
 
 })
 
-$('#enregistrerId').click(function () {
+function getPlanning() {
+    alert("dans l'appel");
+    alert(dateSelected);
+    var dates = dateSelected;
+    var url = "/Planning/getPlanning?selectedDate=" + dates; //getPlanningurl + dateSelected;
+    $.get(url, function (data, status) {
+        //alert("data : " + data + "\n status : " + status);
+        window.location();
+    })
+}
 
-    alert("a implimenter");
+//$("#consultaionBtn").click(function () {
+//    $("#consultaionBtn").hide();
+//    //alert(dateSelected);
+//    //var dates = dateSelected;
+//    //var url = "/Planning/getPlanning?selectedDate=" + dates; //getPlanningurl + dateSelected;
+//    //$.get(url, function (data, status) {
+//    //    //alert("data : " + data + "\n status : " + status);
+//    //    window.location();
+//    //})
+//})
+
+$('#enregistrerId').click(function () {
+    
+    var date;
+    var promotion = escape($('#promotionId').val());
+    var matiere = escape($('#matierId').val());
+    var salle = escape($('#salleId').val());
+    var professeur = escape($('#professeurId').val());
+    var heuredabut = $('#heuredebutId').val();
+    var heurefin = $('#heurefinId').val();
+    if (promotion == null || matiere == null || salle == null || professeur == null || heuredabut == null || heurefin == null || promotion == "" || matiere == "" || salle == "" || professeur == "" || heuredabut == "" || heurefin == "") {
+        alert("tous les champs sont obligatoire!");
+    }
+    else {
+        var url = saveUrl; //+ promotion + "&matiere=" + matiere + "&salle=" + salle + "&professeur=" + professeur + "&heuredabut=" + heuredabut + "&heurefin=" + heurefin;
+        $.post(url,
+            {
+                promotion: promotion,
+                matiere: matiere,
+                salle: salle,
+                professeur: professeur,
+                heuredabut: heuredabut,
+                heurefin: heurefin
+            },
+            function (data, status) {
+                alert("data: " + data + "\n status: " + status);
+            })
+    }
 });
 
 //function searchByarticle() {

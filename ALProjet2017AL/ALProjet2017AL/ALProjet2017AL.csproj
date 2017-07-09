@@ -206,6 +206,8 @@
     <Compile Include="Controllers\PlanningController.cs" />
     <Compile Include="Controllers\PlanningStudentController.cs" />
     <Compile Include="Controllers\WeeklyPlanningController.cs" />
+    <Compile Include="Dal\GenericRepository.cs" />
+    <Compile Include="Dal\unitOfWork.cs" />
     <Compile Include="ETUDIANT.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -243,6 +245,7 @@
     <Compile Include="Models\PlageHoraireModel.cs" />
     <Compile Include="Models\PlanningDateModel.cs" />
     <Compile Include="Models\ProfesseurModel.cs" />
+    <Compile Include="Models\ReservationModels.cs" />
     <Compile Include="Models\SalleModel.cs" />
     <Compile Include="Models\StudentModel.cs" />
     <Compile Include="PROMOTION.cs">
@@ -255,8 +258,18 @@
     <Compile Include="SALLE.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Service\PlanningService.cs" />
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
-    <Compile Include="Views\ViewModels\ReservationHeure\IndexViewModel.cs" />
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewModels\ReservationHeure\IndexViewModelPlanning.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -348,6 +361,7 @@
     <Content Include="Views\Planning\_Formulaire.cshtml" />
     <Content Include="Views\DailyPlanning\DayPlanning.cshtml" />
     <Content Include="Views\Planning\_Formulaire.cshtml" />
+    <Content Include="Views\Planning\_ConsultationPlanning.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

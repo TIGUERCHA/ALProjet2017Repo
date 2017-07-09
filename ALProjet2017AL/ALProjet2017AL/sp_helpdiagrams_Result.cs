@@ -10,17 +10,13 @@
 namespace ALProjet2017AL
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class RESERVATIONs
+    public partial class sp_helpdiagrams_Result
     {
+        public string Database { get; set; }
+        public string Name { get; set; }
         public int ID { get; set; }
-        public string PROMOTION { get; set; }
-        public string MATIERE { get; set; }
-        public string SALLE { get; set; }
-        public string PROFESSEUR { get; set; }
-        public System.DateTime DATE { get; set; }
-        public System.DateTime DATE_DEBUT { get; set; }
-        public System.DateTime DATE_FIN { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }

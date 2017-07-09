@@ -1,4 +1,4 @@
-﻿@model ALProjet2017AL.Views.ViewModels.ReservationHeure.IndexViewModel
+﻿@model ALProjet2017AL.Views.ViewModels.ReservationHeure.IndexViewModelPlanning
 
 <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4" id="formulaire">
     <div class="panel panel-primary">
@@ -23,7 +23,7 @@
                     @Html.Label("Matière", new { @class = "input-sm" })
                 </div>
                 <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6">
-                    @Html.TextBoxFor(model => model.MATIERE, new { id = "cdenumbt", @class = "input-sm" })
+                    @Html.TextBoxFor(model => model.MATIERE, new { id = "matierId", @class = "input-sm" })
                     @*@Html.ValidationMessageFor(model => model)*@
 
                 </div>
@@ -38,7 +38,7 @@
                     @Html.Label("Salle", new { @class = "input-sm" })
                 </div>
                 <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6">
-                    @Html.TextBoxFor(model => model.SALLE, new { id = "natureBt", @class = "input-sm" })
+                    @Html.TextBoxFor(model => model.SALLE, new { id = "salleId", @class = "input-sm" })
                 </div>
             </div>
             <div class="row">
@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6">
-                    @Html.TextBoxFor(model => model.PROFFESSEUR, new { id = "numremedy", @class = "input-sm" })
+                    @Html.TextBoxFor(model => model.PROFFESSEUR, new { id = "professeurId", @class = "input-sm" })
                     @*@Html.ValidationMessageFor(model => model.CDE_NUMREMEDY)*@
                 </div>
             </div>
@@ -59,12 +59,14 @@
 <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8" id="formulaire2">
     <div class="panel panel-primary">
         <div class="panel-body zoneBeige">
+            horaires
+            <hr />
             <div class="row form-group-sm">
                 <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
                     @Html.Label("Debut", new { @class = "input-sm" })
                 </div>
                 <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3">
-                    @Html.TextBoxFor(model => model.HEURE_DEBUT, new { id = "startDatePicker", @class = "input-sm" })  @*dPicker*@
+                    @Html.TextBoxFor(model => model.HEURE_DEBUT, new { id = "heuredebutId", @class = "form-control input-small", @Type="time" })  @*dPicker*@
 
 
                 </div>
@@ -75,9 +77,8 @@
                 </div>
                 <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3">
 
-                    @Html.TextBoxFor(model => model.HEURE_FIN, new { id = "finishDatePicker", @class = "input-sm" }) @*dPicker*@
+                    @Html.TextBoxFor(model => model.HEURE_FIN, new { id = "heurefinId", @class = "form-control input-small", @Type = "time" }) @*dPicker*@
                 </div>
-
                 <br /><br />
             </div>
         </div>
