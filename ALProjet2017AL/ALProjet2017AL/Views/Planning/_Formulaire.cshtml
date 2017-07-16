@@ -1,21 +1,27 @@
-﻿@model ALProjet2017AL.Views.ViewModels.ReservationHeure.IndexViewModelPlanning
+﻿@model ALProjet2017AL.Views.ViewModels.ReservationHeure.ReservationListeModel
 
 <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4" id="formulaire">
     <div class="panel panel-primary">
         <div class="panel-body zoneBeige">
+                                                                                          
+            <div class="row">
+                <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                    @Html.Label("Date", new { @class = "input-sm" })
+                </div>
+                <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                    @Html.TextBoxFor(model => model.Reservations[0].DATE, new { id = "dateId", @class = "form-control input-small", @Type = "date" })  @*dPicker*@
+                </div>
+            </div>
+
+            <hr />
 
             <div class="row">
                 <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
                     @Html.Label("Promotion", new { @class = "input-sm" })
                 </div>
                 <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6">
-                    @Html.TextBoxFor(model => model.PROMOTION, new { id = "promotionId", @class = "input-sm" })
-
-                </div>
-                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                    <button class="btn btn-default input-sm" type="button" data-toggle='modal' data-target='#Promotion' id="promotionId" data-callback="onclosePopupPromotion">
-                        <i class="glyphicon glyphicon-search"></i>
-                    </button>
+                    @*@Html.TextBoxFor(model => model.PROMOTION, new { id = "promotionId", @class = "input-sm" })*@
+                    @Html.DropDownList("PromotionList", null, htmlAttributes: new { @class = "form-control input-sm", id = "promotionId" })
                 </div>
             </div>
             <div class="row">
@@ -23,14 +29,9 @@
                     @Html.Label("Matière", new { @class = "input-sm" })
                 </div>
                 <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6">
-                    @Html.TextBoxFor(model => model.MATIERE, new { id = "matierId", @class = "input-sm" })
+                    @*@Html.TextBoxFor(model => model.MATIERE, new { id = "matierId", @class = "input-sm" })*@
+                    @Html.DropDownList("MatiereList", null, htmlAttributes: new { @class = "form-control input-sm", id = "matierId" })
                     @*@Html.ValidationMessageFor(model => model)*@
-
-                </div>
-                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                    <button class="btn btn-default input-sm" type="button" data-toggle='modal' data-target='#Promotion' id="promotionId" data-callback="onclosePopupPromotion">
-                        <i class="glyphicon glyphicon-search"></i>
-                    </button>
                 </div>
             </div>
             <div class="row">
@@ -38,7 +39,8 @@
                     @Html.Label("Salle", new { @class = "input-sm" })
                 </div>
                 <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6">
-                    @Html.TextBoxFor(model => model.SALLE, new { id = "salleId", @class = "input-sm" })
+                    @*@Html.TextBoxFor(model => model.SALLE, new { id = "salleId", @class = "input-sm" })ViewBag.SalleList*@
+                    @Html.DropDownList("SalleList", null, htmlAttributes: new { @class = "form-control input-sm", id = "salleId" })
                 </div>
             </div>
             <div class="row">
@@ -47,8 +49,8 @@
                 </div>
 
                 <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6">
-                    @Html.TextBoxFor(model => model.PROFFESSEUR, new { id = "professeurId", @class = "input-sm" })
-                    @*@Html.ValidationMessageFor(model => model.CDE_NUMREMEDY)*@
+                    @Html.DropDownList("ProfList", null, htmlAttributes: new { @class = "form-control input-sm", id = "professeurId" })
+                    @*@Html.TextBoxFor(model => model.PROFFESSEUR, new { id = "professeurId", @class = "input-sm" })*@
                 </div>
             </div>
         </div>
@@ -59,26 +61,27 @@
 <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8" id="formulaire2">
     <div class="panel panel-primary">
         <div class="panel-body zoneBeige">
-            horaires
+            <h4>horaires</h4>
             <hr />
             <div class="row form-group-sm">
                 <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
                     @Html.Label("Debut", new { @class = "input-sm" })
                 </div>
                 <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3">
-                    @Html.TextBoxFor(model => model.HEURE_DEBUT, new { id = "heuredebutId", @class = "form-control input-small", @Type="time" })  @*dPicker*@
-
-
+                    @Html.TextBoxFor(model => model.Reservations[0].HEURE_DEBUT, new { id = "heuredebutId", @class = "form-control input-small", @Type="time" })  @*dPicker*@
                 </div>
+
                 <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1">
                 </div>
+
                 <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
                     @Html.Label("Fin", new { @class = "input-sm" })
                 </div>
                 <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3">
 
-                    @Html.TextBoxFor(model => model.HEURE_FIN, new { id = "heurefinId", @class = "form-control input-small", @Type = "time" }) @*dPicker*@
+                    @Html.TextBoxFor(model => model.Reservations[0].HEURE_FIN, new { id = "heurefinId", @class = "form-control input-small", @Type = "time" }) @*dPicker*@
                 </div>
+
                 <br /><br />
             </div>
         </div>

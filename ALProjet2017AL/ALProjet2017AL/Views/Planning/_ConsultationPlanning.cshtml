@@ -1,4 +1,4 @@
-﻿@model ALProjet2017AL.Views.ViewModels.ReservationHeure.IndexViewModelPlanning
+﻿@model ALProjet2017AL.Views.ViewModels.ReservationHeure.ReservationListeModel
 @*@{
     ViewBag.Title = "_ConsultationPlanning";
 }*@
@@ -6,33 +6,37 @@
 <div class="modal fade" id="consultaion"tabindex="-1" role="contentinfo">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="modaldemandeurclose"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="DemandeurLabel">ConsultationPlanning</h4>
-            </div>
-            <div class="modal-body">
-                <table id="tableConsultation">
-                    <thead>
-                        <tr>
-                            <th>
-                            @Model.MATIERE
-                            <br/>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td></td>
-                        </tr>
-                        <tr id="ligneSeparation">
-                            <td></td>
-                        </tr>
-                        <tr class="danger">
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            @if (Model.Reservations.Count<1)
+            {
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="modaldemandeurclose"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="DemandeurLabel">Aucune plage hourraire reservé pour le jour choisit</h4>
+                </div>
+            }
+            else
+            {
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="modaldemandeurclose"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="DemandeurLabel">ConsultationPlanning @Model.Reservations[0].DATE</h4>
+                </div>
+                <div class="modal-body">
+                    @foreach (var item in Model.Reservations)
+                {
+                        <ul>
+                            <li>
+                                @item.MATIERE
+                            </li>
+                            <li>
+                                @item.PROFFESSEUR
+                            </li>
+                            <li>
+                                @item.PROMOTION
+                            </li>
+                        </ul>
+                    }
+                </div>
+            }
+            
         </div>
     </div>
 </div>

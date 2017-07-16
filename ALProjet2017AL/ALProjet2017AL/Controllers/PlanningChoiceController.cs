@@ -21,7 +21,7 @@ namespace ALProjet2017AL.Controllers
         //    {
         //        return RedirectToAction("DayPlanning", "DailyPlanning");
         //    }
-        //    else if(TypePlanning.Equals("week"))
+        //    else if (TypePlanning.Equals("week"))
         //    {
         //        return RedirectToAction("WeekPlanning", "WeeklyPlanning");
         //    }

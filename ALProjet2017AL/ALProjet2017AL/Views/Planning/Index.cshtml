@@ -1,4 +1,4 @@
-﻿@model ALProjet2017AL.Views.ViewModels.ReservationHeure.IndexViewModelPlanning
+﻿@model ALProjet2017AL.Views.ViewModels.ReservationHeure.ReservationListeModel
 @{
     ViewBag.Title = "Planning";
 }
@@ -12,12 +12,10 @@
         @Html.Partial("_Formulaire")
 </div>
 
-@*<div id="droit">*@
-    @Html.Partial("_ConsultationPlanning", Model)
-@*</div>*@
-@*<div class="col-md-2">*@
+@Html.Partial("_ConsultationPlanning", Model)
+@Html.Partial("_Popups", Model)
+
     <button class="btn btn-default" type="button" data-toggle="modal" data-target="#consultaion" id="consultaionBtn"></button>
-@*</div>*@
 
     <script type="text/javascript">
         var saveUrl = '@Html.Raw(Url.Action("enregistrer", "Planning"))';

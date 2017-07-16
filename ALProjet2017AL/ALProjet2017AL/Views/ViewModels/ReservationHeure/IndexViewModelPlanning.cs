@@ -18,9 +18,9 @@ namespace ALProjet2017AL.Views.ViewModels.ReservationHeure
         public string PROFFESSEUR { get; set; }
     }
 
-    //public class ReservationListeModel
-    //{
-    //    public List<IndexViewModel> Reservations { get; set; }
-    //    public string ERREUR { get; set; }
-    //}
+    public class ReservationListeModel
+    {
+        public List<IndexViewModelPlanning> Reservations { get; set; }
+        public string ERREUR { get; set; }
+    }
 }

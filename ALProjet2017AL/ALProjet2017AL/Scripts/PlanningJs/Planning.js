@@ -1,7 +1,7 @@
 ﻿var dateSelected = null;
 
 $(document).ready(function () {
-    $("#consultaionBtn").hide();
+    initview();
 });
 
 $('#calendar').datepicker({
@@ -11,19 +11,20 @@ $('#calendar').datepicker({
     showOtherMonths: true,
     dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
     onSelect: function (dateText, inst) {
-        
         dateSelected = dateText;
-        $("#consultaionBtn").text("Planning de \n" + dateText);
-        $("#consultaionBtn").show();
-        alert("avant");
         getPlanning();
+        alert("alert");
+        $('#consultaionBtn').focus().click();
     }
 
 })
 
+function initview() {
+    
+    $("#consultaionBtn").hide();
+}
+
 function getPlanning() {
-    alert("dans l'appel");
-    alert(dateSelected);
     var dates = dateSelected;
     var url = "/Planning/getPlanning?selectedDate=" + dates; //getPlanningurl + dateSelected;
     $.get(url, function (data, status) {
@@ -33,27 +34,44 @@ function getPlanning() {
 }
 
 //$("#consultaionBtn").click(function () {
-//    $("#consultaionBtn").hide();
+//    //$('#consultaionBtn').load(_ConsultationPlanning.cshtml, function(responseTxt, statusTxt, xhr){
+//    //    if(statusTxt == "success")
+//    //        alert("External content loaded successfully!");
+//    //    if(statusTxt == "error")
+//    //        alert("Error: " + xhr.status + ": " + xhr.statusText);
+//    //});
+
+//    //$("#consultaionBtn").hide();
 //    //alert(dateSelected);
 //    //var dates = dateSelected;
 //    //var url = "/Planning/getPlanning?selectedDate=" + dates; //getPlanningurl + dateSelected;
 //    //$.get(url, function (data, status) {
-//    //    //alert("data : " + data + "\n status : " + status);
+//    //    alert("data : " + data + "\n status : " + status);
 //    //    window.location();
-//    //})
+//});
+
+//    $.ajax({
+//        url: '/Planning/getPlanning?selectedDate=' + dates,
+//        cache: false
+//    }).done(function (data) {
+//        // cette fonction est appelée lorsque nous avons des données
+//        // TODO : mettre à jour le contenu
+//    });
 //})
 
 $('#enregistrerId').click(function () {
     
-    var date;
-    var promotion = escape($('#promotionId').val());
+    var date = $('#dateId').val();
+    var promotion = $('#promotionId').val();
     var matiere = escape($('#matierId').val());
     var salle = escape($('#salleId').val());
     var professeur = escape($('#professeurId').val());
     var heuredabut = $('#heuredebutId').val();
     var heurefin = $('#heurefinId').val();
-    if (promotion == null || matiere == null || salle == null || professeur == null || heuredabut == null || heurefin == null || promotion == "" || matiere == "" || salle == "" || professeur == "" || heuredabut == "" || heurefin == "") {
-        alert("tous les champs sont obligatoire!");
+    if (promotion == null || matiere == null || salle == null || professeur == null || heuredabut == null || heurefin == null || date == null || promotion == "" || matiere == "" || salle == "" || professeur == "" || heuredabut == "" || heurefin == "" || date == "") {
+        $("#idPopupMessage").val("Veuillez renseigner tous les champs !");
+        $('#poPupMessage').modal('show');
+        $('#poPupMessage').css('zIndex', 10000);
     }
     else {
         var url = saveUrl; //+ promotion + "&matiere=" + matiere + "&salle=" + salle + "&professeur=" + professeur + "&heuredabut=" + heuredabut + "&heurefin=" + heurefin;
@@ -64,7 +82,8 @@ $('#enregistrerId').click(function () {
                 salle: salle,
                 professeur: professeur,
                 heuredabut: heuredabut,
-                heurefin: heurefin
+                heurefin: heurefin,
+                date: date
             },
             function (data, status) {
                 alert("data: " + data + "\n status: " + status);

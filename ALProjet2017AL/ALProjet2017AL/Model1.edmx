@@ -20,6 +20,20 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LIBELLE" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'CalendrierESGI.dbo.PROFESSEUR' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="PROFESSEUR">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="NOM" />
+            <PropertyRef Name="PRENOM" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOM" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PRENOM" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="50" />
+          <Property Name="TELEPHONE" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
         <EntityType Name="PROMOTION">
           <Key>
             <PropertyRef Name="id" />
@@ -97,6 +111,15 @@
           <EntitySet Name="RESERVATIONs" EntityType="Self.RESERVATIONs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SALLE" EntityType="Self.SALLE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROFESSEUR" EntityType="Self.PROFESSEUR" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PROFESSEUR].[ID] AS [ID], 
+    [PROFESSEUR].[NOM] AS [NOM], 
+    [PROFESSEUR].[PRENOM] AS [PRENOM], 
+    [PROFESSEUR].[EMAIL] AS [EMAIL], 
+    [PROFESSEUR].[TELEPHONE] AS [TELEPHONE]
+    FROM [dbo].[PROFESSEUR] AS [PROFESSEUR]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -139,6 +162,7 @@
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
           <EntitySet Name="RESERVATIONs" EntityType="CalendrierESGIModel.RESERVATIONs" />
+          <EntitySet Name="PROFESSEUR" EntityType="CalendrierESGIModel.PROFESSEUR" />
         </EntityContainer>
         <EntityType Name="ETUDIANT">
           <Key>
@@ -204,6 +228,18 @@
           <Property Name="DATE" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="DATE_DEBUT" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="DATE_FIN" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="PROFESSEUR">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="NOM" />
+            <PropertyRef Name="PRENOM" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOM" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PRENOM" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TELEPHONE" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -291,6 +327,17 @@
                 <ScalarProperty Name="SALLE" ColumnName="SALLE" />
                 <ScalarProperty Name="MATIERE" ColumnName="MATIERE" />
                 <ScalarProperty Name="PROMOTION" ColumnName="PROMOTION" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROFESSEUR">
+            <EntityTypeMapping TypeName="CalendrierESGIModel.PROFESSEUR">
+              <MappingFragment StoreEntitySet="PROFESSEUR">
+                <ScalarProperty Name="TELEPHONE" ColumnName="TELEPHONE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PRENOM" ColumnName="PRENOM" />
+                <ScalarProperty Name="NOM" ColumnName="NOM" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

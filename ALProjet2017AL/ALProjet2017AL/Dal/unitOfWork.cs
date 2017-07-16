@@ -10,6 +10,10 @@ namespace ALProjet2017AL.Dal
         private CalendrierESGIEntities context = new CalendrierESGIEntities();
         private GenericRepository<RESERVATIONs> reservationRepository;
         private GenericRepository<RESERVATIONs> getReservationDay;
+        private GenericRepository<PROMOTION> getPromotion;
+        private GenericRepository<MATIERE> getMatiere;
+        private GenericRepository<SALLE> getSalle;
+        private GenericRepository<PROFESSEUR> getProf;
         public GenericRepository<RESERVATIONs> ReservationRepository
         {
             get
@@ -31,6 +35,54 @@ namespace ALProjet2017AL.Dal
                     this.getReservationDay = new GenericRepository<RESERVATIONs>(context);
                 }
                 return getReservationDay;
+            }
+        }
+
+        public GenericRepository<PROMOTION> GetPromotion
+        {
+            get
+            {
+                if (this.getPromotion == null)
+                {
+                    this.getPromotion = new GenericRepository<PROMOTION>(context);
+                }
+                return getPromotion;
+            }
+        }
+
+        public GenericRepository<MATIERE> GetMatiere
+        {
+            get
+            {
+                if (this.getMatiere == null)
+                {
+                    this.getMatiere = new GenericRepository<MATIERE>(context);
+                }
+                return getMatiere;
+            }
+        }
+
+        public GenericRepository<SALLE> GetSalle
+        {
+            get
+            {
+                if (this.getSalle == null)
+                {
+                    this.getSalle = new GenericRepository<SALLE>(context);
+                }
+                return getSalle;
+            }
+        }
+
+        public GenericRepository<PROFESSEUR> GetProf
+        {
+            get
+            {
+                if (this.getProf == null)
+                {
+                    this.getProf = new GenericRepository<PROFESSEUR>(context);
+                }
+                return getProf;
             }
         }
 

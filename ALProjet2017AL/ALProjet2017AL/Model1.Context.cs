@@ -33,6 +33,7 @@ namespace ALProjet2017AL
         public virtual DbSet<SALLE> SALLE { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<RESERVATIONs> RESERVATIONs { get; set; }
+        public virtual DbSet<PROFESSEUR> PROFESSEUR { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

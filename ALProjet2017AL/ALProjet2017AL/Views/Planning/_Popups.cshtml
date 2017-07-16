@@ -1,0 +1,30 @@
+﻿<div class="modal fade" id="poPupMessage" role="dialog" aria-labelledby="Alerteur">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header bg-danger">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="modalsearchclose"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="SearchLabel">Attention !</h4>
+
+            </div>
+            <div class="modal-body" id="PoPupMessageContent">
+                @Html.TextArea("mess", null, new
+           {
+               id = "idPopupMessage",
+               @class = "form-control",
+               rows = "7",
+               cols = "35",
+               @readonly = "readonly",
+               style = "background-color:#FFF; position:center"
+           })
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary pull-right  button-margin-right input-sm" data-dismiss="modal">
+                    <span>Fermer</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -14,12 +14,14 @@ namespace ALProjet2017AL.Controllers
         // GET: Planning
         public ActionResult Index()
         {
-            IndexViewModelPlanning model = new IndexViewModelPlanning();
-            model = _getPlanning();
-            return View(model);
+            List<IndexViewModelPlanning> ListViewModel = new List<IndexViewModelPlanning>();
+            ReservationListeModel listModel = new ReservationListeModel();
+            ListViewModel = initModelPlanning();
+            listModel.Reservations = ListViewModel.ToList();
+            return View(listModel);
         }
 
-        public ActionResult enregistrer(string promotion, string matiere, string salle, string professeur, string heuredabut, string heurefin)
+        public ActionResult enregistrer(string promotion, string matiere, string salle, string professeur, string heuredabut, string heurefin, string date)
         {
             string messErreur = null;
 
@@ -30,6 +32,7 @@ namespace ALProjet2017AL.Controllers
             reservation.PROFFESSEUR = professeur;
             reservation.DATE_DEBUT = Convert.ToDateTime(heuredabut);
             reservation.DATE_FIN = Convert.ToDateTime(heurefin);
+            reservation.DATE = Convert.ToDateTime(date);
 
             messErreur = PlanningService.AjouterReservationDansLaBase(reservation);
             //if (messErreur == null)
@@ -41,35 +44,114 @@ namespace ALProjet2017AL.Controllers
 
         public ActionResult getPlanning(string selectedDate)
         {
-            IndexViewModelPlanning viewmodelReservation = new IndexViewModelPlanning();
-            ReservationModels reservationModel = new ReservationModels();
-            reservationModel = PlanningService.GetByDay(selectedDate);
-
-
-            if (reservationModel.reservation.DATE != null)
+            List<IndexViewModelPlanning> ListViewModel = new List<IndexViewModelPlanning>();
+            List<IndexViewModelPlanning> ListViewModelFiltrer = new List<IndexViewModelPlanning>();
+            ReservationListeModel listModel = new ReservationListeModel();
+            ListViewModel = initModelPlanning();
+            foreach (var item in ListViewModel)
             {
-                //viewmodelReservation.DATE = Convert.ToDateTime(reservationModel.reservation.DATE);
-                viewmodelReservation.MATIERE = reservationModel.reservation.MATIERE;
-                //ViewData["date"] = reservationModel.reservation.DATE;
+                if (item.DATE == Convert.ToDateTime(selectedDate))
+                {
+                    ListViewModelFiltrer.Add(item);
+                }
             }
-            //return Content(reservationModel.ERREUR);
-            return View("Index", viewmodelReservation);
+            listModel.Reservations = ListViewModelFiltrer.ToList();
+            //return View();
+            return PartialView("_ConsultationPlanning", listModel);//, viewmodelReservation
         }
 
-        public IndexViewModelPlanning _getPlanning()
+        public List<IndexViewModelPlanning> initModelPlanning()
         {
-            IndexViewModelPlanning viewmodelReservation = new IndexViewModelPlanning();
-            ReservationModels reservationModel = new ReservationModels();
-            reservationModel = PlanningService.GetByDay("02/07/2017");
+            InitdropDownList();
+            List<RESERVATION_MODEL> listReservationModel = new List<RESERVATION_MODEL>();
 
-
-            if (reservationModel.reservation.DATE != null)
-            {
-                //viewmodelReservation.DATE = Convert.ToDateTime(reservationModel.reservation.DATE);
-                viewmodelReservation.MATIERE = reservationModel.reservation.MATIERE;
-                //ViewData["date"] = reservationModel.reservation.DATE;
-            }
+            List<IndexViewModelPlanning> viewmodelReservation = new List<IndexViewModelPlanning>();
+            listReservationModel = PlanningService.GetAll();
+            viewmodelReservation = mappingModelViewModel(listReservationModel);
+           
             return viewmodelReservation;
+        }
+
+        private void InitdropDownList()
+        {
+            ViewBag.PromotionList = new SelectList(GetPromotionList(), "Key", "Value");
+            ViewBag.MatiereList = new SelectList(GetMatiereList(), "Key", "Value");
+            ViewBag.SalleList = new SelectList(GetSalleList(), "Key", "Value");
+            ViewBag.ProfList = new SelectList(GetProfList(), "Key", "Value");
+        }
+
+        public static Dictionary<string, string> GetPromotionList()
+        {
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+
+            List<PROMOTION> listePromo = ElementListService.GetPromotion();
+            dictionary.Add("0", "--");
+            foreach (PROMOTION promo in listePromo)
+            {
+                dictionary.Add((string)promo.nom_specialite, promo.nom_specialite);
+            }
+
+            return dictionary;
+        }
+
+        public static Dictionary<string, string> GetMatiereList()
+        {
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+
+            List<MATIERE> listeMatiere = ElementListService.GetMatiere();
+            dictionary.Add("0", "--");
+            foreach (MATIERE matiere in listeMatiere)
+            {
+                dictionary.Add((string)matiere.LIBELLE, matiere.LIBELLE);
+            }
+
+            return dictionary;
+        }
+
+        public static Dictionary<string, string> GetSalleList()
+        {
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+
+            List<SALLE> listeSalle = ElementListService.GetSalle();
+            dictionary.Add("0", "--");
+            foreach (SALLE salle in listeSalle)
+            {
+                dictionary.Add((string)salle.nom_salle, salle.nom_salle);
+            }
+
+            return dictionary;
+        }
+
+        public static Dictionary<string, string> GetProfList()
+        {
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+
+            List<PROFESSEUR> listeProf = ElementListService.GetfProfesseur();
+            dictionary.Add("0", "--");
+            foreach (PROFESSEUR prof in listeProf)
+            {
+                dictionary.Add((string)prof.NOM, prof.NOM);
+            }
+
+            return dictionary;
+        }
+
+        public static List<IndexViewModelPlanning> mappingModelViewModel(List<RESERVATION_MODEL> listReservationModel)
+        {
+            List<IndexViewModelPlanning> listviewmodelReservation = new List<IndexViewModelPlanning>();
+            foreach (var item in listReservationModel)
+            {
+                IndexViewModelPlanning viewModelReservation = new IndexViewModelPlanning();
+                viewModelReservation.DATE = item.DATE;
+                viewModelReservation.HEURE_DEBUT = item.DATE_DEBUT;
+                viewModelReservation.HEURE_FIN = item.DATE_FIN;
+                viewModelReservation.MATIERE = item.MATIERE;
+                viewModelReservation.PROFFESSEUR = item.PROFFESSEUR;
+                viewModelReservation.PROMOTION = item.PROMOTION;
+                viewModelReservation.SALLE = item.SALLE;
+                listviewmodelReservation.Add(viewModelReservation);
+            }
+            return listviewmodelReservation;
         }
     }
 }
