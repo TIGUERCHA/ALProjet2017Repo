@@ -10,6 +10,14 @@ function initview() {
 
     var url = "/Connexion/GetInfoUser";
     $.getJSON(url, null, function (json) {
+        console.log(json.statut);
+        if (json.statut === "ADMIN") {
+            $('#formulaire').show();
+            $('#formulaire2').show();
+        } else {
+            $('#formulaire').hide();
+            $('#formulaire2').hide();
+        }
         console.log(json);
         if (json.email === "") {
             $('#navPlanningId').hide();
@@ -20,13 +28,7 @@ function initview() {
             $('#logOutLink').show();
             $('#loginLink').hide();
         }
-        if (json.status === "ADMIN") {
-            $('#formulaire').show();
-            $('#formulaire2').show();
-        } else {
-            $('#formulaire').hide();
-            $('#formulaire2').hide();
-        }
+        
 
     });
 }
