@@ -1,0 +1,78 @@
+﻿@model ALProjet2017AL.Models.UTILISATEUR_MODEL
+@{
+    ViewBag.Title = "Connexion";
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/bootstrapcss")
+    @Styles.Render("~/Content/site.css")
+}
+
+<div class="container">
+
+    <div class="col-md-10">
+        <div class="zoneBlanc">
+            <br />
+            @if (ViewBag.ErrorConnection != null)
+            {
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    @ViewBag.ErrorConnection
+                </div>
+            }
+            <br />
+            <p align="center" style="color: black; font-family: Verdana; font-size: 200%; ">Connexion planning ESGI </p>
+            <br />
+            <div class="panel panel-primary">
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12 col-md-offset-2">
+                            <section id="loginForm">
+                                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                    @Html.ValidationSummary(true)
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.E_MAIL, new { @class = "col-md-2 control-label" })
+                                        <div class="col-md-5">
+                                            @Html.TextBoxFor(m => m.E_MAIL, new { @class = "form-control" , @id="ConnexionEmailId"})
+                                            @Html.ValidationMessageFor(m => m.E_MAIL)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.PASSWORD, new { @class = "col-md-2 control-label" })
+                                        <div class="col-md-5">
+                                            @Html.PasswordFor(m => m.PASSWORD, new { @class = "form-control", @id = "ConnexionPasswordId" })
+                                            @Html.ValidationMessageFor(m => m.PASSWORD)
+                                        </div>
+                                    </div>
+                                    @*<div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <div class="checkbox">
+                                                @Html.CheckBoxFor(m => m.RememberMe)
+                                                @Html.LabelFor(m => m.RememberMe)
+                                            </div>
+                                        </div>
+                                    </div>*@
+                                    <div class="form-group">
+                                        <div class="col-md-offset-3 col-md-10">
+                                            <input type="button" value="Se connecter" class="btn btn-info" id="ConnexionBtnId"/>
+                                        </div>
+                                    </div>
+                                    
+                                }
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Html.Partial("_Popups", Model)
+</div>
+<script type="text/javascript">
+    var CheckLoginUrl = '@Html.Raw(Url.Action("CheckLogin", "Connexion"))';
+</script>

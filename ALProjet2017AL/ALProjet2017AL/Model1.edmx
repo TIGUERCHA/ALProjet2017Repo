@@ -73,6 +73,24 @@ avertissement 6002: La table/vue 'CalendrierESGI.dbo.PROFESSEUR' n'a pas de clé
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'CalendrierESGI.dbo.UTILISATEUR' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="UTILISATEUR">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="NOM" />
+            <PropertyRef Name="PRENOM" />
+            <PropertyRef Name="E_MAIL" />
+            <PropertyRef Name="STATUT" />
+            <PropertyRef Name="PASSWORD" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOM" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PRENOM" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="E_MAIL" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="STATUT" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PASSWORD" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -120,6 +138,16 @@ avertissement 6002: La table/vue 'CalendrierESGI.dbo.PROFESSEUR' n'a pas de clé
     [PROFESSEUR].[TELEPHONE] AS [TELEPHONE]
     FROM [dbo].[PROFESSEUR] AS [PROFESSEUR]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="UTILISATEUR" EntityType="Self.UTILISATEUR" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UTILISATEUR].[ID] AS [ID], 
+    [UTILISATEUR].[NOM] AS [NOM], 
+    [UTILISATEUR].[PRENOM] AS [PRENOM], 
+    [UTILISATEUR].[E_MAIL] AS [E_MAIL], 
+    [UTILISATEUR].[STATUT] AS [STATUT], 
+    [UTILISATEUR].[PASSWORD] AS [PASSWORD]
+    FROM [dbo].[UTILISATEUR] AS [UTILISATEUR]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -163,6 +191,7 @@ avertissement 6002: La table/vue 'CalendrierESGI.dbo.PROFESSEUR' n'a pas de clé
           <FunctionImport Name="sp_upgraddiagrams" />
           <EntitySet Name="RESERVATIONs" EntityType="CalendrierESGIModel.RESERVATIONs" />
           <EntitySet Name="PROFESSEUR" EntityType="CalendrierESGIModel.PROFESSEUR" />
+          <EntitySet Name="UTILISATEUR" EntityType="CalendrierESGIModel.UTILISATEUR" />
         </EntityContainer>
         <EntityType Name="ETUDIANT">
           <Key>
@@ -240,6 +269,22 @@ avertissement 6002: La table/vue 'CalendrierESGI.dbo.PROFESSEUR' n'a pas de clé
           <Property Name="PRENOM" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TELEPHONE" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="UTILISATEUR">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="NOM" />
+            <PropertyRef Name="PRENOM" />
+            <PropertyRef Name="E_MAIL" />
+            <PropertyRef Name="STATUT" />
+            <PropertyRef Name="PASSWORD" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOM" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PRENOM" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="E_MAIL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="STATUT" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PASSWORD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -336,6 +381,18 @@ avertissement 6002: La table/vue 'CalendrierESGI.dbo.PROFESSEUR' n'a pas de clé
               <MappingFragment StoreEntitySet="PROFESSEUR">
                 <ScalarProperty Name="TELEPHONE" ColumnName="TELEPHONE" />
                 <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PRENOM" ColumnName="PRENOM" />
+                <ScalarProperty Name="NOM" ColumnName="NOM" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UTILISATEUR">
+            <EntityTypeMapping TypeName="CalendrierESGIModel.UTILISATEUR">
+              <MappingFragment StoreEntitySet="UTILISATEUR">
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="STATUT" ColumnName="STATUT" />
+                <ScalarProperty Name="E_MAIL" ColumnName="E_MAIL" />
                 <ScalarProperty Name="PRENOM" ColumnName="PRENOM" />
                 <ScalarProperty Name="NOM" ColumnName="NOM" />
                 <ScalarProperty Name="ID" ColumnName="ID" />

@@ -14,6 +14,7 @@ namespace ALProjet2017AL.Dal
         private GenericRepository<MATIERE> getMatiere;
         private GenericRepository<SALLE> getSalle;
         private GenericRepository<PROFESSEUR> getProf;
+        private GenericRepository<UTILISATEUR> getUser;
         public GenericRepository<RESERVATIONs> ReservationRepository
         {
             get
@@ -83,6 +84,18 @@ namespace ALProjet2017AL.Dal
                     this.getProf = new GenericRepository<PROFESSEUR>(context);
                 }
                 return getProf;
+            }
+        }
+
+        public GenericRepository<UTILISATEUR> GetUser
+        {
+            get
+            {
+                if (this.getUser == null)
+                {
+                    this.getUser = new GenericRepository<UTILISATEUR>(context);
+                }
+                return getUser;
             }
         }
 

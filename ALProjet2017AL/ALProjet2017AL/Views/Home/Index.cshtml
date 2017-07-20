@@ -1,4 +1,5 @@
-﻿@{
+﻿@model ALProjet2017AL.Views.ViewModels.ReservationHeure.ReservationListeModel
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -9,3 +10,35 @@
     <p><a href="http://www.esgi.fr/" class="btn btn-primary btn-lg">Site officiel &raquo;</a></p>
 </div>
 
+<div class="col-md-8 col-xs-8 col-sm-8 col-lg-8" id="formulaire3" style="width:100%">
+    <div class="panel panel-primary">
+        <div class="panel-body zoneBeige">
+            <div class="row form-group-sm">
+                <h4> Consultation par salle</h4>
+                <hr/>
+                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                    @Html.Label("Date", new { @class = "input-sm" })
+                </div>
+                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                    @Html.TextBoxFor(model => model.Reservations[0].HEURE_DEBUT, new { id = "dateHomeId", @class = "form-control input-small", @Type = "date" })  @*dPicker*@
+                </div>
+
+                <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1">
+                </div>
+
+                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                    @Html.Label("Salle", new { @class = "input-sm" })
+                </div>
+                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+
+                    @Html.TextBoxFor(model => model.Reservations[0].HEURE_FIN, new { id = "salleHomeId", @class = "form-control input-small", @Type = "text" }) @*dPicker*@
+                </div>
+                    <button type="button" class="btn btn-primary" id="rechercherSalleId">Rechercher</button>
+                @Html.Hidden("RedirectTo", Url.Action("Index", "PlanningBySalle"));
+                    <br /><br />
+                </div>
+        </div>
+    </div>
+    
+</div>
+<script src="../Scripts/PlanningJs/Planning.js"></script>

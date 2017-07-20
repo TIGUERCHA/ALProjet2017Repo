@@ -21,7 +21,7 @@ namespace ALProjet2017AL.Controllers
             return View(listModel);
         }
 
-        public ActionResult enregistrer(string promotion, string matiere, string salle, string professeur, string heuredabut, string heurefin, string date)
+        public ActionResult enregistrer(string promotion, string matiere, string salle, string professeur, string heuredebut, string heurefin, string date)
         {
             string messErreur = null;
 
@@ -30,7 +30,7 @@ namespace ALProjet2017AL.Controllers
             reservation.MATIERE = matiere;
             reservation.SALLE = salle;
             reservation.PROFFESSEUR = professeur;
-            reservation.DATE_DEBUT = Convert.ToDateTime(heuredabut);
+            reservation.DATE_DEBUT = Convert.ToDateTime(heuredebut);
             reservation.DATE_FIN = Convert.ToDateTime(heurefin);
             reservation.DATE = Convert.ToDateTime(date);
 
@@ -67,7 +67,7 @@ namespace ALProjet2017AL.Controllers
 
             List<IndexViewModelPlanning> viewmodelReservation = new List<IndexViewModelPlanning>();
             listReservationModel = PlanningService.GetAll();
-            viewmodelReservation = mappingModelViewModel(listReservationModel);
+            viewmodelReservation = PlanningService.mappingModelViewModel(listReservationModel);
            
             return viewmodelReservation;
         }
@@ -85,7 +85,7 @@ namespace ALProjet2017AL.Controllers
             Dictionary<string, string> dictionary = new Dictionary<string, string>();
 
             List<PROMOTION> listePromo = ElementListService.GetPromotion();
-            dictionary.Add("0", "--");
+            dictionary.Add("0", "");
             foreach (PROMOTION promo in listePromo)
             {
                 dictionary.Add((string)promo.nom_specialite, promo.nom_specialite);
@@ -99,7 +99,7 @@ namespace ALProjet2017AL.Controllers
             Dictionary<string, string> dictionary = new Dictionary<string, string>();
 
             List<MATIERE> listeMatiere = ElementListService.GetMatiere();
-            dictionary.Add("0", "--");
+            dictionary.Add("0", "");
             foreach (MATIERE matiere in listeMatiere)
             {
                 dictionary.Add((string)matiere.LIBELLE, matiere.LIBELLE);
@@ -113,7 +113,7 @@ namespace ALProjet2017AL.Controllers
             Dictionary<string, string> dictionary = new Dictionary<string, string>();
 
             List<SALLE> listeSalle = ElementListService.GetSalle();
-            dictionary.Add("0", "--");
+            dictionary.Add("0", "");
             foreach (SALLE salle in listeSalle)
             {
                 dictionary.Add((string)salle.nom_salle, salle.nom_salle);
@@ -127,7 +127,7 @@ namespace ALProjet2017AL.Controllers
             Dictionary<string, string> dictionary = new Dictionary<string, string>();
 
             List<PROFESSEUR> listeProf = ElementListService.GetfProfesseur();
-            dictionary.Add("0", "--");
+            dictionary.Add("0", "");
             foreach (PROFESSEUR prof in listeProf)
             {
                 dictionary.Add((string)prof.NOM, prof.NOM);
@@ -136,22 +136,5 @@ namespace ALProjet2017AL.Controllers
             return dictionary;
         }
 
-        public static List<IndexViewModelPlanning> mappingModelViewModel(List<RESERVATION_MODEL> listReservationModel)
-        {
-            List<IndexViewModelPlanning> listviewmodelReservation = new List<IndexViewModelPlanning>();
-            foreach (var item in listReservationModel)
-            {
-                IndexViewModelPlanning viewModelReservation = new IndexViewModelPlanning();
-                viewModelReservation.DATE = item.DATE;
-                viewModelReservation.HEURE_DEBUT = item.DATE_DEBUT;
-                viewModelReservation.HEURE_FIN = item.DATE_FIN;
-                viewModelReservation.MATIERE = item.MATIERE;
-                viewModelReservation.PROFFESSEUR = item.PROFFESSEUR;
-                viewModelReservation.PROMOTION = item.PROMOTION;
-                viewModelReservation.SALLE = item.SALLE;
-                listviewmodelReservation.Add(viewModelReservation);
-            }
-            return listviewmodelReservation;
-        }
     }
 }

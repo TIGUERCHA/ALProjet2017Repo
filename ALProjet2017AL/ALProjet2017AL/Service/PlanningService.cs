@@ -68,5 +68,23 @@ namespace ALProjet2017AL.Service
             }
             return modelList;
         }
+
+        public static List<IndexViewModelPlanning> mappingModelViewModel(List<RESERVATION_MODEL> listReservationModel)
+        {
+            List<IndexViewModelPlanning> listviewmodelReservation = new List<IndexViewModelPlanning>();
+            foreach (var item in listReservationModel)
+            {
+                IndexViewModelPlanning viewModelReservation = new IndexViewModelPlanning();
+                viewModelReservation.DATE = item.DATE;
+                viewModelReservation.HEURE_DEBUT = item.DATE_DEBUT;
+                viewModelReservation.HEURE_FIN = item.DATE_FIN;
+                viewModelReservation.MATIERE = item.MATIERE;
+                viewModelReservation.PROFFESSEUR = item.PROFFESSEUR;
+                viewModelReservation.PROMOTION = item.PROMOTION;
+                viewModelReservation.SALLE = item.SALLE;
+                listviewmodelReservation.Add(viewModelReservation);
+            }
+            return listviewmodelReservation;
+        }
     }
 }

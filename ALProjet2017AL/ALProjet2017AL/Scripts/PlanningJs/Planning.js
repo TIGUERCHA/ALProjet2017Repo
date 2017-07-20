@@ -12,8 +12,16 @@ $('#calendar').datepicker({
     dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
     onSelect: function (dateText, inst) {
         dateSelected = dateText;
+        $('.divReservation').each(function (i, obj) {
+    
+            var date = $(this).data("date").split(" ")[0];
+            if (date == dateSelected) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
         getPlanning();
-        alert("alert");
         $('#consultaionBtn').focus().click();
     }
 
@@ -32,6 +40,18 @@ function getPlanning() {
         window.location();
     })
 }
+
+$('#rechercherSalleId').click(function () {
+    var date = $('#dateHomeId').val();
+    var salle = $('#salleHomeId').val();
+    var url = "/PlanningBySalle/Index?date=" + date + "&salle=" + salle; //getPlanningurl + dateSelected;
+    $.get(url, function (data, status) {
+        //alert("data : " + data + "\n status : " + status);
+        window.location();
+        var url = $("#RedirectTo").val();
+        location.href = url;
+    })
+})
 
 //$("#consultaionBtn").click(function () {
 //    //$('#consultaionBtn').load(_ConsultationPlanning.cshtml, function(responseTxt, statusTxt, xhr){
@@ -66,27 +86,60 @@ $('#enregistrerId').click(function () {
     var matiere = escape($('#matierId').val());
     var salle = escape($('#salleId').val());
     var professeur = escape($('#professeurId').val());
-    var heuredabut = $('#heuredebutId').val();
+    var heuredebut = $('#heuredebutId').val();
     var heurefin = $('#heurefinId').val();
-    if (promotion == null || matiere == null || salle == null || professeur == null || heuredabut == null || heurefin == null || date == null || promotion == "" || matiere == "" || salle == "" || professeur == "" || heuredabut == "" || heurefin == "" || date == "") {
+    if (promotion == null || matiere == null || salle == null || professeur == null || heuredebut == null || heurefin == null || date == null || promotion == "" || matiere == "" || salle == "" || professeur == "" || heuredebut == "" || heurefin == "" || date == "") {
         $("#idPopupMessage").val("Veuillez renseigner tous les champs !");
         $('#poPupMessage').modal('show');
         $('#poPupMessage').css('zIndex', 10000);
     }
     else {
-        var url = saveUrl; //+ promotion + "&matiere=" + matiere + "&salle=" + salle + "&professeur=" + professeur + "&heuredabut=" + heuredabut + "&heurefin=" + heurefin;
+        var url = saveUrl; //+ promotion + "&matiere=" + matiere + "&salle=" + salle + "&professeur=" + professeur + "&heuredebut=" + heuredebut + "&heurefin=" + heurefin;
         $.post(url,
             {
                 promotion: promotion,
                 matiere: matiere,
-                salle: salle,
+                salle: salle + '*' + heuredebut.toString() + '*' + heurefin.toString(),
                 professeur: professeur,
-                heuredabut: heuredabut,
+                heuredebut: heuredebut,
                 heurefin: heurefin,
                 date: date
             },
             function (data, status) {
-                alert("data: " + data + "\n status: " + status);
+                $("#idPopupMessage").val("Status: " + status);
+                $('#poPupMessage').modal('show');
+                $('#poPupMessage').css('zIndex', 10000);
+                
+                $('input').val("");
+                $('select').val("");
+
+                var dateString = date.replace('-', '/').replace('-', '/');
+                var dateString2 = dateString.split('/')[2] + '/'+ dateString.split('/')[1] + '/'+ dateString.split('/')[0];
+                
+                var html = '<div data-date="' + dateString2 + '" class="divReservation">'
+                            + '<h5 class="modal-title" id="DemandeurLabel">' + dateString2 + '</h5>'
+                            + '<h5 class="modal-title" id="entete3">'
+                            + heuredebut
+                            +'</h5>'
+                            + '<ul>'
+                                + '<li>'
+                                    + promotion
+                                + '</li>'
+                                + '<li>'
+                                    + matiere
+                                + '</li>'
+                                + '<li>'
+                                    + salle
+                                + '</li>'
+                                + '<li>'
+                                    + professeur
+                                + '</li>'
+                            + '</ul>'
+                            + '<h5 class="modal-title" id="entete4">' + heurefin + '</h5>'
+                            + '<hr />'
+                        + '</div>';
+                $('#consultaion .modal-body').append(html);
+               
             })
     }
 });
@@ -113,3 +166,4 @@ $('#searchvalid').click(function () {
     //    $('#idRechercheList').html(data);
     //});
 });
+

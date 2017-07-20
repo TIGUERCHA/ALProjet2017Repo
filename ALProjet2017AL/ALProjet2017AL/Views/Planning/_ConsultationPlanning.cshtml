@@ -6,7 +6,7 @@
 <div class="modal fade" id="consultaion"tabindex="-1" role="contentinfo">
     <div class="modal-dialog">
         <div class="modal-content">
-            @if (Model.Reservations.Count<1)
+            @if (Model.Reservations.Count < 1)
             {
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="modaldemandeurclose"><span aria-hidden="true">&times;</span></button>
@@ -17,22 +17,32 @@
             {
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="modaldemandeurclose"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="DemandeurLabel">ConsultationPlanning @Model.Reservations[0].DATE</h4>
+                    <h4 class="modal-title" id="entete1">ConsultationPlanning </h4>
                 </div>
                 <div class="modal-body">
                     @foreach (var item in Model.Reservations)
                 {
-                        <ul>
-                            <li>
-                                @item.MATIERE
-                            </li>
-                            <li>
-                                @item.PROFFESSEUR
-                            </li>
-                            <li>
-                                @item.PROMOTION
-                            </li>
-                        </ul>
+                        <div data-date="@item.DATE" class="divReservation">
+                            <h5 class="modal-title" id="entete2">@item.DATE.ToString().Split(' ')[0]</h5>
+                            <h5 class="modal-title" id="entete3">@item.SALLE.ToString().Split('*')[1]</h5>
+                            <ul>
+                                <li>
+                                    @item.PROMOTION
+                                </li>
+                                <li>
+                                    @item.MATIERE
+                                </li>
+                                <li>
+                                    @item.SALLE.Split('*')[0]
+                                </li>
+                                <li>
+                                    @item.PROFFESSEUR
+                                </li>
+                            </ul>
+                            <h5 class="modal-title" id="entete4">@item.SALLE.ToString().Split('*')[2]</h5>
+                            <hr />
+                        </div>
+                        
                     }
                 </div>
             }

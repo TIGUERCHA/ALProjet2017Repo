@@ -12,6 +12,7 @@
         <EntityTypeShape EntityType="CalendrierESGIModel.sysdiagrams" Width="1.5" PointX="3.75" PointY="3.875" />
         <EntityTypeShape EntityType="CalendrierESGIModel.RESERVATIONs" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="CalendrierESGIModel.PROFESSEUR" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="CalendrierESGIModel.UTILISATEUR" Width="1.5" PointX="3.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
