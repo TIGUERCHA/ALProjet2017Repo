@@ -45,12 +45,12 @@ $('#rechercherSalleId').click(function () {
     var date = $('#dateHomeId').val();
     var salle = $('#salleHomeId').val();
     var url = "/PlanningBySalle/Index?date=" + date + "&salle=" + salle; //getPlanningurl + dateSelected;
-    $.get(url, function (data, status) {
-        //alert("data : " + data + "\n status : " + status);
-        window.location();
-        var url = $("#RedirectTo").val();
-        location.href = url;
-    })
+    //$.get(url, function (data, status) {
+    //    //alert("data : " + data + "\n status : " + status);
+    //    window.location();
+    //    var url = $("#RedirectTo").val();
+    //    location.href = url;
+    //})
 })
 
 //$("#consultaionBtn").click(function () {

@@ -34,7 +34,7 @@
                     @Html.TextBoxFor(model => model.Reservations[0].HEURE_FIN, new { id = "salleHomeId", @class = "form-control input-small", @Type = "text" }) @*dPicker*@
                 </div>
                     <button type="button" class="btn btn-primary" id="rechercherSalleId">Rechercher</button>
-                @Html.Hidden("RedirectTo", Url.Action("Index", "PlanningBySalle"));
+                @Html.Hidden("RedirectTo", Url.Action("Index", "PlanningBySalle"))
                     <br /><br />
                 </div>
         </div>
